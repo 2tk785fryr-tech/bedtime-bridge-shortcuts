@@ -36,7 +36,11 @@ yours.
 | Disarm | `RUN_DISARM` | Your steps for turning off a home alarm |
 | Arm Stay | `RUN_ARM_STAY` | Your steps for setting a home alarm for the night |
 | Backstop Early, Deadline, Late | `RUN_BACKSTOP_EARLY`, `RUN_BACKSTOP_DEADLINE`, `RUN_BACKSTOP_LATE` | Says the backstop out loud, then your steps for when you're not up yet (lights on, a speaker) |
+| Set Tomorrow's Alarms | *(none: a Time of Day automation, e.g. 22:00 daily)* | Sets tomorrow's alarms at that time unless you already set them or chose no alarms (Apple Home or phone-only setups; needs app 0.5.1) |
 | Leave Check | `RUN_LEAVE_CHECK` | Checks the drive and reminds you when to leave |
+
+Set Tomorrow's Alarms is set up differently: Automation → **Time of Day** → your time → Daily →
+**Run Immediately** → Run Shortcut → Set Tomorrow's Alarms.
 
 Bedtime also works on its own, or from a charger, Sleep Focus or bed-sensor automation.
 
