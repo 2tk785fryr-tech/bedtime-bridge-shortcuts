@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bedtime Bridge Shortcuts</title>
+<meta name="description" content="Ready-made shortcuts for the Bedtime Bridge iPhone app, with step-by-step setup.">
+<meta name="theme-color" content="#0B1026">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>:root {
+  --ground: #0B1026; --surface: #141B3A; --raised: #1C2550; --border: #2A3366;
+  --text: #EEF0FF; --soft: #C9CEEA; --muted: #A9B1D6; --faint: #8F98C4;
+  --accent: #6D4AFF; --accent-2: #8B5CF6; --accent-text: #DDD6FE; --accent-icon: #C4B5FD;
+  --leave: #60A5FA; --good: #7DE3C8; --amber: #FBBF24; --snooze: #FDE047; --nap: #FF7A3D;
+  --radius: 22px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--ground); color: var(--text);
+  font-family: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+a { color: var(--accent-text); }
+img, svg { max-width: 100%; }
+
+/* ---------- Night sky background ---------- */
+.sky {
+  position: relative; isolation: isolate;
+  background:
+    radial-gradient(1200px 600px at 75% -10%, rgba(109,74,255,.35), transparent 60%),
+    radial-gradient(900px 500px at 0% 30%, rgba(96,165,250,.12), transparent 60%),
+    linear-gradient(180deg, #1C2550 0%, #0B1026 70%);
+}
+.sky::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    radial-gradient(1.6px 1.6px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 28% 62%, #C4B5FD 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 44% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 58% 40%, #A9B1D6 50%, transparent 51%),
+    radial-gradient(1.8px 1.8px at 71% 22%, #fff 50%, transparent 51%),
+    radial-gradient(1.1px 1.1px at 83% 70%, #C4B5FD 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 92% 35%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 6% 80%, #A9B1D6 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 36% 88%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 65% 85%, #C4B5FD 50%, transparent 51%);
+  opacity: .8;
+}
+.horizon {
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 120px; z-index: -1;
+  background: radial-gradient(120% 120px at 50% 120px, var(--ground) 70%, transparent 71%);
+}
+
+/* ---------- Layout ---------- */
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+section { padding: 96px 0; }
+section.tight { padding: 64px 0; }
+.alt { background: linear-gradient(180deg, var(--ground), #10173A 50%, var(--ground)); }
+.eyebrow {
+  display: inline-block; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent-icon); font-weight: 600; margin-bottom: 12px;
+}
+h1, h2, h3 { line-height: 1.15; margin: 0 0 16px; letter-spacing: -.02em; }
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 700; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 650; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+p { margin: 0 0 16px; color: var(--soft); }
+.lead { font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--soft); max-width: 640px; }
+.center { text-align: center; }
+.center .lead { margin-left: auto; margin-right: auto; }
+.muted { color: var(--muted); }
+.small { font-size: .9rem; }
+.motto {
+  font-weight: 600; background: linear-gradient(90deg, #DDD6FE, #8B5CF6 60%, #60A5FA);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---------- Nav ---------- */
+nav.top {
+  position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px);
+  background: rgba(11,16,38,.72); border-bottom: 1px solid rgba(42,51,102,.6);
+}
+nav.top .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
+nav.top .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; color: var(--text); text-decoration: none; }
+nav.top .brand svg { width: 32px; height: 32px; border-radius: 8px; }
+nav.top .links { margin-left: auto; display: flex; gap: 22px; }
+nav.top .links a { color: var(--muted); text-decoration: none; font-size: .92rem; }
+nav.top .links a:hover { color: var(--text); }
+@media (max-width: 720px) { nav.top .links { display: none; } }
+
+/* ---------- Buttons ---------- */
+.btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.center .btns { justify-content: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px;
+  font-weight: 600; text-decoration: none; font-size: .98rem; transition: transform .15s, box-shadow .15s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn.primary { background: var(--accent); color: #fff; box-shadow: 0 10px 30px rgba(109,74,255,.45); }
+.btn.ghost { border: 1.5px solid rgba(109,74,255,.75); color: var(--accent-text); }
+.btn.sm { padding: 8px 14px; font-size: .86rem; }
+.btn.disabled { opacity: .45; pointer-events: none; }
+
+/* ---------- Hero ---------- */
+.hero { padding: 72px 0 140px; }
+.hero .grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.hero .appicon { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 18px 50px rgba(109,74,255,.45); margin-bottom: 24px; }
+@media (max-width: 900px) { .hero .grid { grid-template-columns: 1fr; } .hero { padding-bottom: 110px; } }
+
+/* ---------- Cards and grids ---------- */
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 900px) { .grid3, .grid4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .grid2, .grid3, .grid4 { grid-template-columns: 1fr; } }
+.card {
+  background: linear-gradient(180deg, rgba(28,37,80,.85), rgba(20,27,58,.85));
+  border: 1px solid var(--border); border-radius: var(--radius); padding: 26px;
+}
+.card p:last-child { margin-bottom: 0; }
+.card .ico {
+  width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 16px;
+  background: rgba(109,74,255,.18); color: var(--accent-icon); font-size: 1.35rem;
+}
+.card.hl { border-color: rgba(109,74,255,.8); box-shadow: 0 0 0 1px rgba(109,74,255,.35), 0 20px 50px rgba(109,74,255,.2); }
+.tag {
+  display: inline-block; font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: rgba(109,74,255,.22); color: var(--accent-text); margin-bottom: 12px; letter-spacing: .04em;
+}
+.tag.good { background: rgba(125,227,200,.15); color: var(--good); }
+.tag.amber { background: rgba(251,191,36,.15); color: var(--amber); }
+ul.ticks { list-style: none; padding: 0; margin: 0; }
+ul.ticks li { padding-left: 26px; position: relative; margin: 8px 0; color: var(--soft); }
+ul.ticks li::before { content: "✓"; position: absolute; left: 0; color: var(--good); font-weight: 700; }
+ul.ticks.minus li::before { content: "–"; color: var(--faint); }
+
+/* ---------- Split sections ---------- */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.split.rev > :first-child { order: 2; }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; gap: 36px; } .split.rev > :first-child { order: 0; } }
+.num {
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 700;
+  background: var(--accent); color: #fff; margin-bottom: 16px;
+}
+
+/* ---------- Phone mockup ---------- */
+.phones { position: relative; display: flex; justify-content: center; gap: 22px; }
+.phone {
+  width: 260px; aspect-ratio: 9 / 19.5; border-radius: 44px; padding: 10px; flex: none;
+  background: linear-gradient(145deg, #3a4170, #151a36); box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 0 0 1px #4a5290 inset;
+}
+.phone .screen {
+  height: 100%; border-radius: 35px; overflow: hidden; position: relative;
+  background: linear-gradient(180deg, #1C2550, #0B1026 75%); padding: 46px 18px 18px; font-size: 13px;
+}
+.phone .screen::before {
+  content: ""; position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+  width: 92px; height: 26px; border-radius: 20px; background: #000;
+}
+.phone.tilt-l { transform: rotate(-6deg) translateY(28px); }
+.phone.tilt-r { transform: rotate(5deg); }
+@media (max-width: 620px) { .phone { width: 210px; } .phone.tilt-l { display: none; } .phone.tilt-r { transform: none; } }
+.ui-time { font-size: 3.6em; font-weight: 300; text-align: center; letter-spacing: -.03em; line-height: 1; margin-top: 18px; }
+.ui-date { text-align: center; color: var(--muted); font-size: .95em; }
+.ui-label { color: var(--muted); font-size: .82em; text-transform: uppercase; letter-spacing: .1em; margin: 14px 0 6px; }
+.ui-card { background: rgba(28,37,80,.9); border: 1px solid var(--border); border-radius: 16px; padding: 12px 14px; margin-bottom: 10px; }
+.ui-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.ui-chip { font-size: .78em; padding: 2px 9px; border-radius: 999px; background: #2B1F5C; color: #DDD6FE; font-weight: 600; }
+.ui-chip.blue { background: #13305A; color: #BFDBFE; }
+.ui-big { font-size: 1.7em; font-weight: 600; }
+.ui-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+.ui-alarm {
+  position: absolute; left: 14px; right: 14px; bottom: 26px; display: grid; gap: 10px;
+}
+.ui-slide {
+  height: 56px; border-radius: 999px; background: rgba(255,255,255,.12); display: flex; align-items: center;
+  padding: 5px; color: var(--soft); font-size: .95em;
+}
+.ui-slide b { width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--ground); display: grid; place-items: center; margin-right: 18px; font-size: 1.2em; }
+.ui-snooze { height: 50px; border-radius: 999px; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 600; }
+.ui-island {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 170px; height: 34px;
+  border-radius: 20px; background: #000; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 12px; font-size: .82em; color: var(--snooze); font-weight: 600; z-index: 2;
+}
+.shot {
+  border: 1.5px dashed rgba(169,177,214,.4); border-radius: 18px; padding: 22px; text-align: center;
+  color: var(--faint); font-size: .88rem; background: rgba(20,27,58,.5);
+}
+
+/* ---------- Steps, tables, code ---------- */
+.steps { counter-reset: s; display: grid; gap: 14px; }
+.step { position: relative; padding: 18px 20px 18px 66px; background: rgba(20,27,58,.7); border: 1px solid var(--border); border-radius: 18px; }
+.step::before {
+  counter-increment: s; content: counter(s); position: absolute; left: 18px; top: 16px;
+  width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff;
+  display: grid; place-items: center; font-weight: 700; font-size: .9rem;
+}
+.step p { margin: 0; }
+.step b { color: var(--text); }
+code, .kbd {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .86em; background: rgba(109,74,255,.18);
+  color: var(--accent-text); padding: 2px 7px; border-radius: 6px; word-break: break-word;
+}
+.table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+.table th, .table td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: .95rem; }
+.table th { background: var(--raised); color: var(--text); font-weight: 600; }
+.table td { color: var(--soft); background: rgba(20,27,58,.6); }
+.table tr:last-child td { border-bottom: 0; }
+.table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+.tablewrap { overflow-x: auto; }
+@media (max-width: 620px) { .table td:first-child { white-space: normal; } }
+
+/* ---------- Footer ---------- */
+footer { padding: 56px 0 48px; border-top: 1px solid var(--border); color: var(--faint); font-size: .9rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
+footer a { color: var(--muted); text-decoration: none; margin-left: 18px; }
+footer a:first-child { margin-left: 0; }
+.appicon { overflow: hidden; }
+.appicon svg, nav.top .brand svg { display: block; width: 100%; height: 100%; }
+nav.top .brand span.i { width: 32px; height: 32px; border-radius: 8px; overflow: hidden; flex: none; }
+
+.which { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.which button {
+  font: inherit; font-weight: 600; padding: 10px 18px; border-radius: 999px; cursor: pointer;
+  border: 1.5px solid rgba(109,74,255,.75); background: transparent; color: var(--accent-text);
+}
+.which button[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.sc { display: flex; flex-direction: column; }
+.sc .cmd { margin: 4px 0 12px; }
+.sc .sugg { font-size: .88rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 12px; margin-top: auto; }
+.sc .get { margin-top: 16px; }
+.grouphead { margin: 56px 0 18px; }
+.grouphead:first-child { margin-top: 0; }
+</style>
+</head>
+<body>
+<nav class="top"><div class="wrap">
+  <a class="brand" href="#"><span class="i"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  
+  <defs>
+    <linearGradient id="sky0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1C2550"/>
+      <stop offset="1" stop-color="#0B1026"/>
+    </linearGradient>
+    <mask id="cut0">
+      <rect width="1024" height="1024" fill="#FFFFFF"/>
+      <circle cx="610" cy="390" r="250" fill="#000000"/>
+    </mask>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#sky0)"/>
+  <circle cx="198" cy="214" r="10" fill="#C4B5FD"/>
+  <circle cx="820" cy="760" r="8" fill="#C4B5FD" opacity="0.8"/>
+  <circle cx="300" cy="840" r="6" fill="#A9B1D6" opacity="0.7"/>
+  <circle cx="470" cy="520" r="290" fill="#DDD6FE" mask="url(#cut0)"/>
+  <path d="M 690 300 A 230 230 0 0 1 760 470" fill="none" stroke="#8B5CF6" stroke-width="34" stroke-linecap="round"/>
+  <path d="M 745 215 A 340 340 0 0 1 860 480" fill="none" stroke="#8B5CF6" stroke-width="34" stroke-linecap="round" opacity="0.6"/>
+</svg>
+</span>Bedtime Bridge Shortcuts</a>
+  <div class="links"><a href="#start">Start here</a><a href="#setup">Setup</a><a href="#shortcuts">All shortcuts</a><a href="#tips">Good to know</a></div>
+</div></nav>
+
+<header class="sky hero" style="padding-bottom:120px">
+  <div class="wrap grid">
+    <div>
+      <div class="appicon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  
+  <defs>
+    <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1C2550"/>
+      <stop offset="1" stop-color="#0B1026"/>
+    </linearGradient>
+    <mask id="cut1">
+      <rect width="1024" height="1024" fill="#FFFFFF"/>
+      <circle cx="610" cy="390" r="250" fill="#000000"/>
+    </mask>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#sky1)"/>
+  <circle cx="198" cy="214" r="10" fill="#C4B5FD"/>
+  <circle cx="820" cy="760" r="8" fill="#C4B5FD" opacity="0.8"/>
+  <circle cx="300" cy="840" r="6" fill="#A9B1D6" opacity="0.7"/>
+  <circle cx="470" cy="520" r="290" fill="#DDD6FE" mask="url(#cut1)"/>
+  <path d="M 690 300 A 230 230 0 0 1 760 470" fill="none" stroke="#8B5CF6" stroke-width="34" stroke-linecap="round"/>
+  <path d="M 745 215 A 340 340 0 0 1 860 480" fill="none" stroke="#8B5CF6" stroke-width="34" stroke-linecap="round" opacity="0.6"/>
+</svg>
+</div>
+      <span class="eyebrow">Shortcuts for Bedtime Bridge</span>
+      <h1>Your bedtime, on autopilot.</h1>
+      <p class="lead"><span class="motto">Up on time, every time.</span> Ready-made shortcuts that set your alarms at bedtime without opening the app, and let your bedtime and morning do more: lights, scenes, music, a Focus.</p>
+      <p class="muted small" style="margin-top:24px;margin-bottom:0">Which app do you have?</p>
+      <div class="which" role="group" aria-label="Which app">
+        <button type="button" data-app="store" aria-pressed="true">Bedtime Bridge</button>
+        <button type="button" data-app="beta" aria-pressed="false">Bedtime Bridge Beta</button>
+      </div>
+      <p class="muted small" style="margin-top:10px">A shortcut only works with the app it was made for. The Get it buttons below follow your choice.</p>
+    </div>
+    <div class="phones"><div class="phone tilt-r"><div class="screen">
+      <div class="ui-label">Automation</div>
+      <div class="ui-card"><div class="ui-row"><b>When</b><span class="muted small">Notification</span></div><div class="muted small">App: Bedtime Bridge</div><div class="muted small">Message contains <span class="ui-chip">RUN_BEDTIME</span></div></div>
+      <div class="ui-card"><div class="ui-row"><span>Run Immediately</span><span style="color:#7DE3C8">●</span></div></div>
+      <div class="ui-card"><div class="ui-row"><span>Notify When Run</span><span class="muted">off</span></div></div>
+      <div class="ui-label">Do</div>
+      <div class="ui-card"><div class="ui-row"><b>Run Shortcut</b><span class="ui-chip">Bedtime</span></div></div>
+      <div class="ui-card"><div class="ui-row"><span>Bedroom lights</span><span class="muted small">10%</span></div></div>
+      <div class="ui-card"><div class="ui-row"><span>Sleep Focus</span><span class="muted small">on</span></div></div>
+    </div></div></div>
+  </div>
+  <div class="horizon"></div>
+</header>
+
+<section class="tight" id="start">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:40px">
+      <span class="eyebrow">Start here</span>
+      <h2>Which ones do you need?</h2>
+      <p class="lead">It depends on how you chose to have your alarms set (the app asks during setup; it's also in Settings → How alarms get set).</p>
+    </div>
+    <div class="grid4">
+      <div class="card hl"><span class="tag good">Recommended</span><h3>A Focus filter</h3><p><b>None needed.</b> Everything here is optional extras.</p></div>
+      <div class="card"><h3>A shortcut</h3><p><b>One:</b> <a href="#set-tomorrows-alarms">Set Tomorrow's Alarms</a> at a set time, or <a href="#bedtime">Bedtime</a> from a Sleep Focus or charger automation.</p></div>
+      <div class="card"><h3>Myself</h3><p><b>None needed.</b> Open the app before bed; it also sets the next 2 mornings.</p></div>
+      <div class="card"><h3>Home Assistant</h3><p><b>None for alarms.</b> Home Assistant runs the rest with its own automations.</p></div>
+    </div>
+    <p class="center muted" style="margin-top:28px">Not sure? Start with <a href="#set-tomorrows-alarms">Set Tomorrow's Alarms</a>: one automation, at a time you pick, every day.</p>
+  </div>
+</section>
+
+<section class="alt" id="setup">
+  <div class="wrap">
+    <div class="split" style="align-items:start">
+      <div>
+        <span class="eyebrow">How they work</span>
+        <h2>Two kinds of shortcut.</h2>
+        <div class="card" style="margin-bottom:14px"><div class="ico">🕙</div><h3>At a time you choose</h3><p>Set Tomorrow's Alarms runs from a Time of Day automation, for example 22:00 every day.</p></div>
+        <div class="card"><div class="ico">✉︎</div><h3>When the app asks</h3><p>The app sends itself a quiet notification with a command word, like <code>RUN_BEDTIME</code>. A Shortcuts automation that watches for that word runs the matching shortcut. Set it up once; it runs on its own after that.</p></div>
+        <p class="muted small" style="margin-top:16px">Every shortcut tells the app when it started and finished, so the app can show a tick.</p>
+      </div>
+      <div>
+        <span class="eyebrow">Setup, once per shortcut</span>
+        <h2>About two minutes.</h2>
+        <div class="steps">
+          <div class="step"><p><b>Add the shortcut.</b> Tap its <b>Get it</b> button below on your iPhone. Shortcuts opens; tap <b>Add Shortcut</b>.</p></div>
+          <div class="step"><p><b>Read the note at the top.</b> What it does, which word it watches for, and where your own steps go.</p></div>
+          <div class="step"><p><b>Make its automation.</b> Shortcuts → <b>Automation</b> → <b>+</b> → <b>Notification</b> → App: <b>Bedtime Bridge</b> → Message contains: the shortcut's word, exactly → <b>Run Immediately</b>, <b>Notify When Run</b> off → Next → <b>Run Shortcut</b> → pick it.</p></div>
+          <div class="step"><p><b>Test it.</b> In the app, tap <b>Test it</b> on the shortcut's card. It ticks when the app sees the shortcut ran.</p></div>
+          <div class="step"><p><b>Add your own steps</b> (optional) where the shortcut says <b>Your steps go here</b>.</p></div>
+        </div>
+        <div class="shot" style="margin-top:16px">Screenshots of each step coming soon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shortcuts">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:48px">
+      <span class="eyebrow">All shortcuts</span>
+      <h2>Pick what you want your phone to do.</h2>
+    </div>
+    <h3 class="grouphead eyebrow" style="font-size:.9rem">Setting your alarms</h3><div class="grid3">
+<div class="card sc" id="set-tomorrows-alarms"><h3>Set Tomorrow&#x27;s Alarms</h3><div class="cmd"><span class="tag">Time of Day automation</span></div><p>Sets tomorrow&#x27;s alarms at a time you choose, unless they&#x27;re already set or you chose no alarms. The one to use if you picked “A shortcut” in setup.</p><p class="small muted">Set up differently: Automation → + → <b>Time of Day</b> → your time → <b>Daily</b> → <b>Run Immediately</b> → Run Shortcut → Set Tomorrow's Alarms.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Pick a time you&#x27;re always home and awake for, like 22:00.</div><a class="btn sm primary get" data-file="Set%20Tomorrow%27s%20Alarms.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="bedtime"><h3>Bedtime</h3><div class="cmd"><code>RUN_BEDTIME</code></div><p>Sets tonight&#x27;s alarms, turns on Sleep Focus and says tomorrow&#x27;s plan. Also works from a Sleep Focus, charger or bed-sensor automation.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Bedroom lights to 10% then off, lock the door, white noise, thermostat to night.</div><a class="btn sm primary get" data-file="Bedtime.shortcut" href="#">Get it</a></div>
+</div>
+<h3 class="grouphead eyebrow" style="font-size:.9rem">Your morning</h3><div class="grid3">
+<div class="card sc" id="good-morning"><h3>Good Morning</h3><div class="cmd"><code>RUN_GOOD_MORNING</code></div><p>Turns off Sleep Focus and says the morning&#x27;s plan.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Open the curtains, lights on, the coffee maker plug, the news on a speaker.</div><a class="btn sm primary get" data-file="Good%20Morning.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="back-to-bed"><h3>Back To Bed</h3><div class="cmd"><code>RUN_BACK_TO_BED</code></div><p>Your steps for going back to bed after an alarm you didn&#x27;t need.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Lights off again, curtains closed, Sleep Focus back on.</div><a class="btn sm primary get" data-file="Back%20To%20Bed.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="morning-update"><h3>Morning Update</h3><div class="cmd"><code>RUN_MORNING_UPDATE</code></div><p>Checks the drive and updates the leave-by reminder.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Porch light on, start the car if its app has a shortcut.</div><a class="btn sm primary get" data-file="Morning%20Update.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="leave-check"><h3>Leave Check</h3><div class="cmd"><code>RUN_LEAVE_CHECK</code></div><p>Checks the drive and reminds you when to leave.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> A speaker announcement: “Leave in 10 minutes”.</div><a class="btn sm primary get" data-file="Leave%20Check.shortcut" href="#">Get it</a></div>
+</div>
+<h3 class="grouphead eyebrow" style="font-size:.9rem">Your evening</h3><div class="grid3">
+<div class="card sc" id="wind-down-on"><h3>Wind Down On</h3><div class="cmd"><code>RUN_WIND_DOWN</code></div><p>Turns on your wind-down Focus and says how long until bed.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Warm, dim lights, grayscale screen, quiet music.</div><a class="btn sm primary get" data-file="Wind%20Down%20On.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="wind-down-off"><h3>Wind Down Off</h3><div class="cmd"><code>RUN_CANCEL_WIND_DOWN</code></div><p>Turns off your wind-down Focus.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Lights back to normal.</div><a class="btn sm primary get" data-file="Wind%20Down%20Off.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="preview-tomorrow"><h3>Preview Tomorrow</h3><div class="cmd"><code>RUN_PLAN_PREVIEW</code></div><p>Shows tomorrow&#x27;s plan without setting any alarms.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Read it out on a speaker in the evening.</div><a class="btn sm primary get" data-file="Preview%20Tomorrow.shortcut" href="#">Get it</a></div>
+</div>
+<h3 class="grouphead eyebrow" style="font-size:.9rem">Naps</h3><div class="grid3">
+<div class="card sc" id="nap-start"><h3>Nap Start</h3><div class="cmd"><code>RUN_NAP_START</code></div><p>Turns on Sleep Focus for a nap.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Dim the room, close the blinds, a nap playlist.</div><a class="btn sm primary get" data-file="Nap%20Start.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="nap-end"><h3>Nap End</h3><div class="cmd"><code>RUN_NAP_END</code></div><p>Turns off Sleep Focus after a nap.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Blinds open, lights up.</div><a class="btn sm primary get" data-file="Nap%20End.shortcut" href="#">Get it</a></div>
+</div>
+<h3 class="grouphead eyebrow" style="font-size:.9rem">Home security</h3><div class="grid3">
+<div class="card sc" id="disarm"><h3>Disarm</h3><div class="cmd"><code>RUN_DISARM</code></div><p>Empty on purpose: your steps for turning off a home alarm in the morning.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Your alarm system&#x27;s shortcut action.</div><a class="btn sm primary get" data-file="Disarm.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="arm-stay"><h3>Arm Stay</h3><div class="cmd"><code>RUN_ARM_STAY</code></div><p>Empty on purpose: your steps for setting a home alarm for the night.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Your alarm system&#x27;s shortcut action.</div><a class="btn sm primary get" data-file="Arm%20Stay.shortcut" href="#">Get it</a></div>
+</div>
+<h3 class="grouphead eyebrow" style="font-size:.9rem">Backstops: when you&#x27;re not up yet</h3><div class="grid3">
+<div class="card sc" id="backstop-early"><h3>Backstop Early</h3><div class="cmd"><code>RUN_BACKSTOP_EARLY</code></div><p>If you&#x27;re not up yet: says so out loud, then your gentle steps.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Bedside lamp on slowly.</div><a class="btn sm primary get" data-file="Backstop%20Early.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="backstop-deadline"><h3>Backstop Deadline</h3><div class="cmd"><code>RUN_BACKSTOP_DEADLINE</code></div><p>Louder: you&#x27;re at your get-up deadline and still in bed.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> All bedroom lights on full, a speaker announcement.</div><a class="btn sm primary get" data-file="Backstop%20Deadline.shortcut" href="#">Get it</a></div>
+<div class="card sc" id="backstop-late"><h3>Backstop Late</h3><div class="cmd"><code>RUN_BACKSTOP_LATE</code></div><p>Last call: everything you&#x27;ve got.</p><div class="sugg"><b style="color:var(--soft)">Ideas for your steps:</b> Everything, plus a message to someone you trust.</div><a class="btn sm primary get" data-file="Backstop%20Late.shortcut" href="#">Get it</a></div>
+</div>
+  </div>
+</section>
+
+<section class="alt" id="tips">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:40px"><span class="eyebrow">Good to know</span><h2>If something doesn't run.</h2></div>
+    <div class="grid3">
+      <div class="card"><h3>More than one is fine</h3><p>Every run re-checks your plan. It never sets a second set of alarms.</p></div>
+      <div class="card"><h3>Check the automation</h3><p><b>Run Immediately</b> on and <b>Notify When Run</b> off, or iOS asks first. The word must match exactly, capitals included.</p></div>
+      <div class="card"><h3>Notifications on</h3><p>The command arrives as a notification: Settings → Notifications → Bedtime Bridge → Allow Notifications.</p></div>
+      <div class="card"><h3>One app each</h3><p>A shortcut works only with the app it was made for. Switched apps? Add the other version.</p></div>
+      <div class="card"><h3>Never by itself</h3><p>The app only opens Shortcuts when you tap a button like Get it or Test it.</p></div>
+      <div class="card"><h3>Signed</h3><p>The shortcuts are signed, so anyone can add them.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span>Bedtime Bridge Shortcuts</span>
+  <span><a href="https://2tk785fryr-tech.github.io/bedtime-bridge-showcase/">The app</a><a href="https://2tk785fryr-tech.github.io/bedtime-bridge-homeassistant/">Home Assistant</a><a href="https://github.com/2tk785fryr-tech/bedtime-bridge-shortcuts">GitHub</a></span>
+</div></footer>
+
+<script>
+  // The Get it buttons follow the app chosen at the top (remembered on this device).
+  const BASE = "https://github.com/2tk785fryr-tech/bedtime-bridge-shortcuts/raw/main/";
+  const FOLDER = { store: "Bedtime%20Bridge", beta: "Bedtime%20Bridge%20Beta" };
+  function pick(app) {
+    document.querySelectorAll(".which button").forEach(b => b.setAttribute("aria-pressed", b.dataset.app === app));
+    document.querySelectorAll("a.get").forEach(a => a.href = BASE + FOLDER[app] + "/" + a.dataset.file);
+    try { localStorage.setItem("bb-app", app); } catch (e) {}
+  }
+  document.querySelectorAll(".which button").forEach(b => b.addEventListener("click", () => pick(b.dataset.app)));
+  let saved = "store"; try { saved = localStorage.getItem("bb-app") || "store"; } catch (e) {}
+  pick(saved);
+</script>
+</body>
+</html>
