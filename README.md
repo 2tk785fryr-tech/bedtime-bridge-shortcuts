@@ -93,7 +93,20 @@ tap **Test it**. The card shows a tick when the app sees the shortcut ran.
 
 > 📷 *Screenshot: a card with its tick*
 
-### 5. Add your own steps (optional)
+### 5. Put it in your folder (recommended)
+
+Keep every Bedtime Bridge shortcut in one folder named **Bedtime Bridge Shortcuts**, so they're
+easy to find when you want to add your own steps, check one, or run one by hand. Folders don't
+change how the shortcuts or their automations run.
+
+1. Open **Shortcuts** and tap **Shortcuts** at the top left until you see your folders.
+2. Tap the **new folder** button (top right), name it **Bedtime Bridge Shortcuts**, pick an
+   icon → **Add**.
+3. Open **All Shortcuts** → **Select** → tap each Bedtime Bridge shortcut → **Move** →
+   **Bedtime Bridge Shortcuts**.
+4. Each new one you add later: press and hold it → **Move** → the folder.
+
+### 6. Add your own steps (optional)
 
 Each shortcut has a spot marked **Your steps go here**. Add any Shortcuts action: lights, a Home
 scene, music, a thermostat, a podcast. The suggestions under each shortcut below are a start.
