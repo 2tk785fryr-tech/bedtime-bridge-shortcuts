@@ -559,12 +559,14 @@ nav.top.scrolled { background: rgba(11,16,38,.92); box-shadow: 0 8px 30px rgba(0
 </div></footer>
 
 <script>
-  // The Get it buttons follow the app chosen at the top (remembered on this device).
+  // The Get it buttons follow the app chosen at the top (remembered on this device). v0.5.4 item
+  // 76: a button's iCloud link for that app when it has one (opens in Shortcuts), else the file.
   const BASE = "https://github.com/2tk785fryr-tech/bedtime-bridge-shortcuts/raw/main/";
   const FOLDER = { store: "Bedtime%20Bridge", beta: "Bedtime%20Bridge%20Beta" };
+  const ICLOUD = { store: "icloudStore", beta: "icloudBeta" };
   function pick(app) {
     document.querySelectorAll(".which button").forEach(b => b.setAttribute("aria-pressed", b.dataset.app === app));
-    document.querySelectorAll("a.get").forEach(a => a.href = BASE + FOLDER[app] + "/" + a.dataset.file);
+    document.querySelectorAll("a.get").forEach(a => a.href = a.dataset[ICLOUD[app]] || BASE + FOLDER[app] + "/" + a.dataset.file);
     try { localStorage.setItem("bb-app", app); } catch (e) {}
   }
   document.querySelectorAll(".which button").forEach(b => b.addEventListener("click", () => pick(b.dataset.app)));
